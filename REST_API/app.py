@@ -19,17 +19,17 @@ def get_store(store_id):
         return {"message": "Store not found"}, 404
 
 # retorna os itens de uma loja em específico
-@app.get("/store/<string:name>/items")
-def get_item_in_store(name):
-    for store in stores:
-        if store["name"] == name:
-            return {"items": store["items"]}, 201
-    return {"message": "Store not found"}, 404
+@app.get("/item/<string:item_id>")
+def get_item(item_id):
+    try:
+        return items[item_id]
+    except KeyError:
+        return {"message": "Item not found"}, 404
 
 # retorna todos os itens da base de dados
-@app.get("/store")
-def get_all_stores():
-    return {"stores": list(stores.values())}
+@app.get("/item")
+def get_all_items():
+    return {"items": list(items.values())}
 
 # recebe uma nova loja
 @app.post("/store")
