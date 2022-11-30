@@ -4,7 +4,7 @@ class StoreSchema(Schema):
     id = fields.Str(dump_only=True)
     name = fields.Str(required=True)
 
-class ItemsSchema(Schema):
+class ItemSchema(Schema):
     id = fields.Str(dump_only=True)
     name = fields.Str(required=True)
     price = fields.Float(required=True)
